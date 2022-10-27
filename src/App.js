@@ -1,25 +1,18 @@
-import logo from './logo.svg';
-import './App.css';
+import ThemeChanger from './ThemeChanger'
+import { useState } from 'react'
+import Sidebar from './Sidebar'
 
 function App() {
+  const [theme, setTheme] = useState('dark')
+  const handleTheme = (status) => {
+    status ? setTheme('cupcake') : setTheme('dark')
+  }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div data-theme={theme} className='h-screen w-screen bg-base-300'>
+      <ThemeChanger handleThemeChange={handleTheme} />
+      {/* <Sidebar /> */}
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
